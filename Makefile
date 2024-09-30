@@ -6,19 +6,21 @@ JFLAGS =
 
 # Sources
 SRC_DIR = src
-SERVER_SRC = $(SRC_DIR)/server/*.java
-CLIENT_SRC = $(SRC_DIR)/client/*.java
+SRC_SERVER = $(SRC_DIR)/server/BingoDrum.java $(SRC_DIR)/server/Server.java
+SRC_CLIENT = $(SRC_DIR)/client/Cardboard.java $(SRC_DIR)/client/Client.java
+SRC = $(SRC_SERVER) $(SRC_CLIENT)
 
 # Output directory
 OUT_DIR = out
 
-all: server client
+all: $(SRC)
+	$(JC) $(JFLAGS) -d $(OUT_DIR) $(SRC)
 
-server: $(SERVER_SRC)
-	$(JC) $(JFLAGS) -d $(OUT_DIR) $(SERVER_SRC)
+# server: $(SERVER_SRC)
+# 	$(JC) $(JFLAGS) -d $(OUT_DIR) $(SERVER_SRC)
 
-client: $(CLIENT_SRC)
-	$(JC) $(JFLAGS) -d $(OUT_DIR) $(CLIENT_SRC)
+# client: $(CLIENT_SRC)
+# 	$(JC) $(JFLAGS) -d $(OUT_DIR) $(CLIENT_SRC)
 
 clean: 
 	rm -rf $(OUT_DIR)/*
