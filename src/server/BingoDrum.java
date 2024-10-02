@@ -10,19 +10,17 @@ import java.util.Random;
  * Clase para generar los números aleatorios por parte del servidor.
  */
 public class BingoDrum {
-    public static final int DRUM_SIZE = 90;
-
     private ArrayList<Integer> drum;
     private Random randomGenerator;
 
     /**
-     * Genera un nuevo bombo con los números del 1 a DRUM_SIZE,
+     * Genera un nuevo bombo con los números del 1 a maxNumber,
      * que coloca desordenados en una lista.
      */
-    public BingoDrum() {
-        this.drum = new ArrayList<>(DRUM_SIZE);
+    public BingoDrum(int maxNumber) {
+        this.drum = new ArrayList<>(maxNumber);
 
-        for (int i = 0; i < DRUM_SIZE; i++) {
+        for (int i = 0; i < maxNumber; i++) {
             this.drum.add(i, i + 1);
         }
 

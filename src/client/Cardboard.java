@@ -12,10 +12,10 @@ public class Cardboard {
     private ArrayList<Integer> card;
     private int numbersLeft;
 
-    public Cardboard() {
+    public Cardboard(int maxNumber) {
         /* Generar números aleatorios de entre los posibles */
-        ArrayList<Integer> possibleNumbers = new ArrayList<>(bingo.server.BingoDrum.DRUM_SIZE);
-        for (int i = 0; i < bingo.server.BingoDrum.DRUM_SIZE; i++) {
+        ArrayList<Integer> possibleNumbers = new ArrayList<>(maxNumber);
+        for (int i = 0; i < maxNumber; i++) {
             possibleNumbers.add(i, i + 1);
         }
 
@@ -36,6 +36,9 @@ public class Cardboard {
         }
     }
 
+    public boolean isFinished() {
+        return (this.numbersLeft == 0);
+    }
 
     public String toString() {
         String startCrossed = "\u001b[9;31m";
@@ -54,9 +57,9 @@ public class Cardboard {
                 outString.append('|');
                 number = this.card.get(i + j * numLines);
                 if (number > 0) {
-                    outString.append(String.format("%2d", number));
+                    outString.append(String.format("%02d", number));
                 } else {
-                    outString.append(String.format(startCrossed + "%2d" + endCrossed, -number));
+                    outString.append(String.format(startCrossed + "%02d" + endCrossed, -number));
                 }
             }
             outString.append("|\n");

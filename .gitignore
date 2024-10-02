@@ -1,2 +1,3 @@
-# Ignore class files
-out/*
+# Ignore output files
+*.class
+*.jar
